@@ -1,0 +1,13 @@
+language: go
+branches:
+  only:
+    - master
+go:
+  - 1.6.x
+  - 1.7.x
+  - 1.8.x
+  - tip
+install:
+  - go get -u -v $(go list -f '{{join .Imports "\n"}}{{"\n"}}{{join .TestImports "\n"}}' ./... | sort | uniq | grep -v duck-duck-orm)
+script:
+  - go test -v
