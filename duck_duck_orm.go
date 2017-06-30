@@ -18,8 +18,8 @@ type DDORM struct {
 }
 
 // NewDDORM creates new ddorm instance
-func NewDDORM() DDORM {
-	d := DDORM{}
+func NewDDORM() *DDORM {
+	d := &DDORM{}
 
 	return d
 }

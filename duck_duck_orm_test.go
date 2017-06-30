@@ -4,15 +4,22 @@ import (
 	"os"
 	"testing"
 
+	"log"
+
 	_ "github.com/lib/pq"
 )
 
-func TestOpen(t *testing.T) {
-	d := DDORM{}
+var D DDORM
 
-	err := d.Connect(POSTGRES, os.Getenv("DB_SOURCE"))
+func TestMain(m *testing.M) {
+	D = DDORM{}
+
+	err := D.Connect(POSTGRES, os.Getenv("DB_SOURCE"))
 
 	if err != nil {
-		t.Fail()
+		log.Fatalln(err.Error())
 	}
+
+	code := m.Run()
+	os.Exit(code)
 }
