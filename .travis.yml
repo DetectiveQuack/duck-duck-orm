@@ -7,6 +7,10 @@ go:
   - 1.7.x
   - 1.8.x
   - tip
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 install:
   - go get -u -v $(go list -f '{{join .Imports "\n"}}{{"\n"}}{{join .TestImports "\n"}}' ./... | sort | uniq | grep -v duck-duck-orm)
 script:
