@@ -12,6 +12,7 @@ type messages struct {
 func TestFind(t *testing.T) {
 	m := messages{id: 1}
 
+	// Currently fails
 	D.Find(&m)
 
 }

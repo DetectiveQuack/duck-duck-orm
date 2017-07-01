@@ -17,8 +17,7 @@ func (d *DDORM) Find(model interface{}) (results []interface{}, err error) {
 
 	defer rows.Close()
 
-	// Needs fixing
-	// results, err = GetResultsFromRows(rows, model)
+	results, err = GetResultsFromRows(rows, model)
 
-	return results, nil
+	return results, err
 }
